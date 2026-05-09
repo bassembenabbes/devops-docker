@@ -10,8 +10,12 @@ export interface User {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  // Use localhost for browser-side requests to the exposed docker port
-  private apiUrl = 'http://localhost:8081/api/users';
+  /**
+   * Relative URL to trigger the Angular Proxy.
+   * The browser calls http://localhost:4200/api/users, 
+   * and the Docker container forwards it to http://user-service:8081/api/users.
+   */
+  private apiUrl = '/api/users';
 
   constructor(private http: HttpClient) {}
 
@@ -24,10 +28,12 @@ export class UserService {
   }
 
   updateUser(id: number, user: User): Observable<User> {
+    // Relative path: /api/users/1
     return this.http.put<User>(`${this.apiUrl}/${id}`, user);
   }
 
   deleteUser(id: number): Observable<any> {
+    // Relative path: /api/users/1
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
