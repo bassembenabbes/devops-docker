@@ -3,7 +3,7 @@ version: '3.9'
 services:
  
   user-service:
-    image: springboot-app:latest
+    image: bbslama/springboot-app:latest
     ports:
       - "8081:8081"
     depends_on:
