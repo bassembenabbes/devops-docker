@@ -1,1 +1,22 @@
-<p>user-manager works!</p>
+<div class="container">
+  <h2>User Management</h2>
+  
+  <!-- Form -->
+  <form (ngSubmit)="saveUser()">
+    <input [(ngModel)]="currentUser.name" name="name" placeholder="Name" required>
+    <input [(ngModel)]="currentUser.email" name="email" placeholder="Email" required>
+    <button type="submit">{{ isEdit ? 'Update' : 'Add' }} User</button>
+    <button type="button" (click)="resetForm()" *ngIf="isEdit">Cancel</button>
+  </form>
+
+  <hr>
+
+  <!-- List -->
+  <ul>
+    <li *ngFor="let user of users">
+      {{ user.name }} ({{ user.email }})
+      <button (click)="editUser(user)">Edit</button>
+      <button (click)="deleteUser(user.id)">Delete</button>
+    </li>
+  </ul>
+</div>
