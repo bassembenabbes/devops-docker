@@ -11,7 +11,7 @@ export interface User {
 @Injectable({ providedIn: 'root' })
 export class UserService {
   // Use localhost for browser-side requests to the exposed docker port
-  private apiUrl = 'http://localhost:8081/users';
+  private apiUrl = 'http://localhost:8081/api/users';
 
   constructor(private http: HttpClient) {}
 

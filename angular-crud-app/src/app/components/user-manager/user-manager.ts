@@ -7,7 +7,7 @@ import { User, UserService } from '../../services/users';
   selector: 'app-user-manager',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './user-manager.component.html'
+  templateUrl: './user-manager.html'
 })
 export class UserManagerComponent implements OnInit {
   users: User[] = [];
